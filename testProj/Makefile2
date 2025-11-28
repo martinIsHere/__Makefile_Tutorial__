@@ -3,11 +3,11 @@ include_dir := $(path_to_SDL3)/x86_64-w64-mingw32/include
 lib_dir := $(path_to_SDL3)/x86_64-w64-mingw32/lib
 #path_to_SDL3_win := ..\SDL3-3.2.26
 
-OUT.exe: $(wildcard bin/obj/*.o)
-	gcc $(wildcard bin/obj/*.o) -o bin/OUT.exe -L $(lib_dir) -l SDL3
+OUT.exe: bin/obj/clear.o
+	gcc bin/obj/clear.o -o bin/clear -L $(lib_dir) -l SDL3
 
-$(wildcard bin/obj/*.o): all bin/SDL3.dll
-	gcc -c $(wildcard *.c) -o $(wildcard ./bin/obj/*.o) -I $(include_dir)
+bin/obj/clear.o: all bin/SDL3.dll
+	gcc -c clear.c -o ./bin/obj/clear.o -I $(include_dir)
 
 all: $(wildcard src/*.cpp)
 
