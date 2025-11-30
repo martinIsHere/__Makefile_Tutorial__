@@ -1,5 +1,13 @@
-OUT.exe: main.o
-	g++ main.o -o OUT # Runs first
+# simple script for compiling .cpp files to .o to .exe
 
-main.o: main.cpp
-	g++ -c main.cpp -o main.o # Runs second
+OUT.exe: $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+	echo "$@" # current target
+	echo "$^" # current prereqs
+	g++ $^ -o OUT
+
+#targets: specific target: prereqs
+$(patsubst %.cpp, %.o, $(wildcard *.cpp)): %.o : %.cpp
+	echo "--------"
+	echo "$@" # current target
+	echo "$^" # current prereqs
+	g++ -c $^ -o $@
