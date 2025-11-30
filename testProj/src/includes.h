@@ -8,9 +8,9 @@
 #include <thread>
 #include <vector>
 
-#include "SDL.h"
-#include "SDL_mixer.h"
-#include "SDL_ttf.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
 #include "Vector.h"
 #define PI 3.1416  // 59
 #define log(a)              \
